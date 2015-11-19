@@ -1,0 +1,63 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- main holds 3 divs: row-1, row-2, and row-3 
+each row holds 3 divs: col-1, col-2, and col-3
+each col- div holds 2 divs: one for the primary emotion, one for the secondary emotion
+
+the secondary emotion is invisible until a primary emotion is clicked
+-->
+</head>
+<body>
+<div id="gradient" />
+<div class="all">
+<div class="transparent"></div>
+<div class="main">
+  <div class="row-1">
+    <div class="col-1">
+      <div class="in primary" id="angry">Angry</div>
+      <div class="in secondary" id="secondary-1"></div>
+    </div>
+    <div class="col-2">
+       <div class="in primary" id="afraid">Afraid</div>
+      <div class="in secondary" id="secondary-2"></div>
+    </div>
+    <div class="col-3">
+       <div class="in primary" id="happy">Happy</div>
+      <div class="in secondary" id="secondary-3"></div>
+    </div>
+  </div>
+  <div class="row-2">
+    <div class="col-1">
+      <div class="in primary" id="impassive">Impassive</div>
+      <div class="in secondary" id="secondary-8"></div>
+    </div>
+    <div class="col-2">
+       <!--<div class="in"></div>-->
+    </div>
+    <div class="col-3">
+       <div class="in primary" id="disgusted">Disgusted</div>
+      <div class="in secondary" id="secondary-4"></div>
+    </div>
+  </div>
+  <div class="row-3">
+    <div class="col-1">
+       <div class="in primary" id="confident">Confident</div>
+      <div class="in secondary" id="secondary-7"></div>
+    </div>
+    <div class="col-2">
+       <div class="in primary" id="troubled">Troubled</div>
+      <div class="in secondary" id="secondary-6"></div>
+    </div>
+    <div class="col-3">
+       <div class="in primary" id="sad">Sad</div>
+      <div class="in secondary" id="secondary-5"></div>
+    </div>
+  </div><br>
+</div>
+</div>
+<div class="back-button">
+     ←
+</div>
+</body>
+</html>
