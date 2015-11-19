@@ -1,0 +1,224 @@
+body {
+  background: #ffffff;
+  color:#707070;
+  font-size:32px;
+  text-align: center;
+  
+}
+	body{
+	 background-color: #000000;
+   padding: 0px;
+   margin: 0px;
+   position: relative;
+ }
+
+#gradient
+{
+  width: 100%;
+  height: 800px;
+  padding: 40px;
+  margin: 0px;
+}
+.all {
+  width: 570px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.transparent {
+  height: 570px;
+  background: #ffffff;
+  z-index: 0;
+  width: 570px;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  border-radius: 5%;
+  opacity: 0.85;
+}
+.main {
+  
+  background: transparent;
+  z-index: 1;
+  position: relative;
+}
+[class*='row-'] {
+  width: inherit;
+}
+
+[class*='col-'] {
+  float: left;
+  height: inherit;
+  background: transparent;
+  position: relative;
+}
+
+.row-1 {
+  height: 200px;
+  margin-bottom: 10px;
+}
+.row-2 {
+  height: 150px;
+  margin-bottom: 10px;
+}
+.row-3 {
+  height: 200px;
+}
+.col-1 {
+  width: 200px;
+  margin-right: 10px;
+}
+.col-2 {
+  width: 150px;
+  margin-right: 10px;
+}
+.col-3 {
+  width: 200px;
+}
+
+.in {
+  background: #FF7896;
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  animation-duration: 1.75s;
+  animation-timing-function: east-in;
+ /*stop animation after 3 pulses*/
+  animation-iteration-count: 3;
+  /*animation-direction: alternate;*/
+  vertical-align: middle;
+  line-height: 150px;
+  border-radius: 6%;
+  z-index = 1;
+  transition-duration: 1.5s;
+  cursor: pointer;
+}
+
+.row-1 .in {  
+  bottom: 0;
+  top: 50;
+}
+.col-1 .in {
+  left: 50;
+  right: 0;
+}
+.row-3 .in {
+  top: 0;
+  bottom: 50;
+}
+.col-3 .in {
+  left: 0;
+  right: 50;
+}
+
+.row-1 .col-1 :nth-child(1) {
+  background: #EA9999;
+  animation-name: cell1;
+  transition-property: right, bottom;
+}
+@keyframes cell1 {
+  0% {bottom: 0px; right: 0px;}
+  25% {bottom:10px;right: 10px;}
+  50% {bottom: 0px; right: 0px;}
+  100% {bottom: 0px; right: 0px;}
+}
+.row-1 .col-2 :nth-child(1) {
+  background: #F9CB9C;
+  animation-name: cell2;
+  transition-property: bottom;
+}
+@keyframes cell2 {
+  0% {bottom: 0px;}
+  25% {bottom: 10px;}
+  50% {bottom: 0px;}
+  100% {bottom: 0px;}
+}
+.row-1 .col-3 :nth-child(1) {
+  background: #FFE599;
+  animation-name: cell3;
+  transition-property: bottom, left;
+}
+@keyframes cell3 {
+  0% {bottom: 0px; left: 0px;}
+  25% {bottom: 10px;left: 10px;}
+  50% {bottom: 0px; left: 0px;}
+  100% {bottom: 0px; left: 0px;}
+}
+.row-2 .col-1 :nth-child(1) {
+  background: #cccccc;
+  animation-name: cell4;
+  transition-property: right;
+}
+@keyframes cell4 {
+  0%   {right: 0px;}
+  25%  {right: 10px;}
+  50%   {right: 0px;}
+  100%   {right: 0px;}
+}
+.row-2 .col-3 :nth-child(1) {
+  background: #b6d7a8;
+  animation-name: cell6;
+  transition-property: left;
+}
+@keyframes cell6 {
+  0%   {left: 0px;}
+  25%  {left: 10px;}
+  50%   {left: 0px;}
+  100%   {left: 0px;}
+}
+.row-3 .col-1 :nth-child(1) {
+  background: #B4A7D6;
+  animation-name: cell7;
+  transition-property: right, top;
+}
+@keyframes cell7 {
+  0% {top: 0px; right: 0px;}
+  25% {top: 10px;right: 10px;}
+  50% {top: 0px; right: 0px;}
+  100% {top: 0px; right: 0px;}
+}
+.row-3 .col-2 :nth-child(1) {
+  background: #82b5c1;
+  animation-name: cell8;
+  transition-property: top;
+}
+@keyframes cell8 {
+  0% {top: 0px;}
+  25% {top: 10px;}
+  50% {top: 0px;}
+  100% {top: 0px;}
+}
+.row-3 .col-3 :nth-child(1) {
+  background: #A4C2F4;
+  animation-name: cell9;
+  transition-property: left, top;
+}
+@keyframes cell9 {
+  0% {top: 0px; left: 0px;}
+  25% {top: 10px;left: 10px;}
+  50% {top: 0px; left: 0px;}
+  100% {top: 0px; left: 0px;}
+}
+
+.secondary {
+  display: none;
+}
+
+.back-button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  width: 50px;
+  height: 50px;
+  background: #bbbbbb;
+  border-radius: 100%;
+  line-height: 50px;
+  cursor: pointer;
+  display: none;
+}
+background: linear-gradient(160deg, #ea9999, #f9cb9c, #ffe599, #cccccc, #b6d7a8, #b4a7d6, #82b5c1, #a4c2f4);
+background-size: 1600% 1600%;
+-webkit-animation: AnimationName 26s ease infinite;
+-moz-animation: AnimationName 26s ease infinite;
+-o-animation: AnimationName 26s ease infinite;
+animation: AnimationName 26s ease infinite;
