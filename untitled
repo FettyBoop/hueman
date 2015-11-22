@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Hueman</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/style.css">
+
+
+    <link rel="stylesheet" href="css/animate.css">
+    
+    
+  </head>
+
+  <body>
+  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- main holds 3 divs: row-1, row-2, and row-3 
+each row holds 3 divs: col-1, col-2, and col-3
+each col- div holds 2 divs: one for the primary emotion, one for the secondary emotion
+
+the secondary emotion is invisible until a primary emotion is clicked
+-->        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
