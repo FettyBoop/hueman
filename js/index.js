@@ -1,3 +1,5 @@
+
+
 var colors = new Array(
   [234,153,153], //angry
   [249,203,156],//afraid
@@ -73,23 +75,38 @@ var color2 = "rgb("+r2+","+g2+","+b2+")";
 setInterval(updateGradient,10);
 
 
+window.onload = function() { init() };
+
+  var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1VgwHL0V7Or7WMGFLtbn5BtuMk98W6bxiAUbiA8WsVJI/pubhtml?gid=0&single=true';
+
+  function init() {
+    Tabletop.init( { key: public_spreadsheet_url,
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    alert("Successfully processed!")
+    console.log(data);
+  }
+
 
 var happy = ["Content", "Satisfied", "Pleased", "Thankful", "Glad", "Joyful", "Excited", "Ecstatic"];
-var happyColors = ["#FFDE05", "#FFFFB0", "#FFFFB0", "#FFFF73", "#F4ED5F", "#F3C13A", "#F8EE28", "#FFFF05"]
+var happyColors = ["#FEF6BD", "#FDF297", "#FCF084", "#FCEE71", "#FCEC5E", "#FBEA4B", "#FAE625", "#FAE200"]
 var sad = ["Dissatisfied", "Lonely", "Disappointed", "Ashamed", "Despondent", "Rejected", "Depressed", "Inconsolable"];
-var sadColors = ["#022DFD", "#8FC2F0", "#4B64D8", "#A6BCF8", "#78CDF2", "#5098F6", "#D0E6F9", "#5D84F4"];
+var sadColors = ["#B8D2FF", "#A5BDEF", "#8095D1", "#6E80C1", "#5C6CB2", "#4958A3", "#242F84", "#121B75"];
 var angry = ["Impatient", "Irritated/Annoyed", "Frustrated", "Upset", "Exasperated","Hostile","Wrathful", "Enraged"];
-var angryColors = ["#F07070","#FF0551", "#EE4D63", "#F82364", "#FF1111", "#E01B1B", "#FD1A37", "#DC0707"];
+var angryColors = ["#FFAEA8","#F89E97", "#EB7E75", "#E56E64", "#DF5E54", "#D23E32", "#CB2E21", "#C51E10"];
 var afraid = ["Surprised","Nervous","Apprehensive","Startled", "Anxious","Scared","Dreadful", "Terrified"];
-var afraidColors = ["#F8C757","#FF9669", "#F8B164", "#F08947", "#F4AE0F", "#F26E35", "#F2520B", "#E54C09"];
+var afraidColors = ["#FFC894","#F2B276", "#E59D58", "#DF924A", "#D8873B", "#D27D2C", "#CB721D", "#C5670E"];
 var disgusted = ["Distasteful", "Bitter", "Jealous", "Spiteful", "Scornful", "Disdainful", "Loathsome", "Hateful"];
-var disgustedColors = ["#00521A","#006620", "#007A27", "#008F2D", "#00A334", "#00B83A", "#00CC41", "#00E047"];
+var disgustedColors = ["#BDEFAC","#AAE29C", "#95D38A", "#7FC579", "#6BB768", "#56A957", "#2D8D35", "#047113"];
 var troubled = ["Hesitant","Restrained", "Confused", "Distraught",  "Overwhelmed", "Powerless", "Vulnerable"];
-var troubledColors = ["#14203E","#18284E", "#1D2F5D", "#22376D", "#273F7C", "#2C478C", "#304D96", "#304D96"];
+var troubledColors = ["#B8FCFF","#A5ECEF", "#93DDE0", "#6EBFC1", "#5CB0B2", "#49A1A3", "#248384", "#006566"];
 var confident = ["Hopeful", "Positive", "Courageous", "Proud", "Arrogant", "Bold", "Fearless", "Powerful"];
-var confidentColors = ["#30194D","#391E5C", "#43236C", "#4C287B", "#562D8B", "#5B3094", "#6937A9", "#723CB9"];
+var confidentColors = ["#F4E1FF","#E6CAF6", "#D9B4EE", "#CB9DE6", "#BE87DE", "#A35ACD", "#882DBD", "#7B16B5"];
 var impassive = ["Calm", "Indifferent", "Sleepy", "Apathetic", "Unethusiastic", "Detached", "Distant", "Content"];
-var impassiveColors = ["#323234","#323234", "#3D3D3E", "#49494A", "#515152", "#5B5B5D", "#656567", "#6F6F71"];
+var impassiveColors = ["#EDEDED","#DDDDDD", "#CDCDCD", "#BDBDBD", "#ADADAD", "#9D9D9D", "#7D7D7D", "#5D5D5D"];
 var secondary;  // set when a main emotion is selected
 // these are used to save the old location of the selected main emotion box
 var secondaryColors;
@@ -99,6 +116,7 @@ var selectedLeft = "auto";
 var selectedRight = "auto"; 
 
 $(document).ready(function(){
+
   $(".in").mouseover(function(event){
     // TODO: when you hover over a box, it should stop moving
   });
