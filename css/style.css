@@ -3,10 +3,14 @@
   src: url('DINPro-Medium.otf');
 }
 
+.customfont{
+font-family:'DinPro';
+font-size:30px;
 
+}
 body {
   background: #ffffff;
-  color:#707070;
+  color:#333333;
   font-size:32px;
   text-align: center;
   font-family:'DinPro';
