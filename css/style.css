@@ -8,6 +8,10 @@ font-family:'DinPro';
 font-size:30px;
 
 }
+
+.introbackground{
+  background-color: #ffffff;
+}
 body {
   background: #ffffff;
   color:#333333;
@@ -17,7 +21,7 @@ body {
 
 }
 	body{
-	 background-color: #000000;
+
    padding: 0px;
    margin: 0px;
    position: relative;
