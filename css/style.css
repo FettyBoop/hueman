@@ -1,6 +1,6 @@
 @font-face {
   font-family:'DinPro';
-  src: url('DINPro-Medium.otf');
+  src: url('../DINPro-Medium.otf');
 }
 
 .customfont{

@@ -74,7 +74,7 @@ var color2 = "rgb("+r2+","+g2+","+b2+")";
 
 setInterval(updateGradient,10);
 
-
+/* TABLETOP */
 window.onload = function() { init() };
 
   var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1VgwHL0V7Or7WMGFLtbn5BtuMk98W6bxiAUbiA8WsVJI/pubhtml?gid=0&single=true';
@@ -86,10 +86,26 @@ window.onload = function() { init() };
   }
 
   function showInfo(data, tabletop) {
+    /*
     alert("Successfully processed!")
     console.log(data);
+    */
   }
 
+
+/* PARSE */
+Parse.initialize("oUZhOv8WHPbnEz6Xu7VXQ5q43E5l0cjuc1Gwr6a0", "OLeksWDdKCnVQx4yUNm0nPwNnfYhG20M8uEH4kPE");
+/*
+var TestObject = Parse.Object.extend("TestObject");
+var testObject = new TestObject();
+testObject.save({foo: "bar"}).then(function(object) {
+  alert("yay! it worked");
+});
+*/
+
+
+
+/* FUNCTIONS FOR BOX INTERACTIONS */
 
 var happy = ["Content", "Satisfied", "Pleased", "Thankful", "Glad", "Joyful", "Excited", "Ecstatic"];
 var happyColors = ["#FEF6BD", "#FDF297", "#FCF084", "#FCEE71", "#FCEC5E", "#FBEA4B", "#FAE625", "#FAE200"]
