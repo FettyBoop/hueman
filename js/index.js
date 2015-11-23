@@ -94,7 +94,7 @@ window.onload = function() { init() };
 
 
 /* PARSE */
-Parse.initialize("oUZhOv8WHPbnEz6Xu7VXQ5q43E5l0cjuc1Gwr6a0", "OLeksWDdKCnVQx4yUNm0nPwNnfYhG20M8uEH4kPE");
+//Parse.initialize("oUZhOv8WHPbnEz6Xu7VXQ5q43E5l0cjuc1Gwr6a0", "OLeksWDdKCnVQx4yUNm0nPwNnfYhG20M8uEH4kPE");
 /*
 var TestObject = Parse.Object.extend("TestObject");
 var testObject = new TestObject();
