@@ -101,7 +101,7 @@ var afraid = ["Surprised","Nervous","Apprehensive","Startled", "Anxious","Scared
 var afraidColors = ["#FFC894","#F2B276", "#E59D58", "#DF924A", "#D8873B", "#D27D2C", "#CB721D", "#C5670E"];
 var disgusted = ["Distasteful", "Bitter", "Jealous", "Spiteful", "Scornful", "Disdainful", "Loathsome", "Hateful"];
 var disgustedColors = ["#BDEFAC","#AAE29C", "#95D38A", "#7FC579", "#6BB768", "#56A957", "#2D8D35", "#047113"];
-var troubled = ["Hesitant","Restrained", "Confused", "Distraught",  "Overwhelmed", "Powerless", "Vulnerable"];
+var troubled = ["Hesitant","Vulnerable", "Restrained", "Confused", "Guilty", "Distraught",  "Overwhelmed", "Powerless"];
 var troubledColors = ["#B8FCFF","#A5ECEF", "#93DDE0", "#6EBFC1", "#5CB0B2", "#49A1A3", "#248384", "#006566"];
 var confident = ["Hopeful", "Positive", "Courageous", "Proud", "Arrogant", "Bold", "Fearless", "Powerful"];
 var confidentColors = ["#F4E1FF","#E6CAF6", "#D9B4EE", "#CB9DE6", "#BE87DE", "#A35ACD", "#882DBD", "#7B16B5"];
@@ -115,10 +115,34 @@ var selectedBottom = "auto";
 var selectedLeft = "auto";
 var selectedRight = "auto"; 
 
+var selectedColor;
 $(document).ready(function(){
 
   $(".in").mouseover(function(event){
-    // TODO: when you hover over a box, it should stop moving
+    // stop primary animation
+    $(".in.primary").css("animation-name","none");
+    $(".in.secondary").css("transition-property","none");
+    // make boxes bigger
+    selectedColor = $(this).css("background-color");
+    
+    
+    // if it's the selected primary emotion, move left 5px and move up 5px
+    $(this).css("border","5px solid " + selectedColor);
+    // if in the second column, move left 5px
+    if ( $(this).parent().hasClass("col-2"))
+      $(this).css("left", "-5px");
+    // if in the second row, move up 5 px
+    if ($(this).parent().parent().hasClass("row-2"))
+      $(this).css("top", "-5px");
+  });
+  
+  $(".in").mouseleave(function(event){
+    $(this).css("border","none");
+    // if in second column, move right 5px
+    if ( $(this).parent().hasClass("col-2"))
+      $(this).css("left", "0px");
+    if ($(this).parent().parent().hasClass("row-2"))
+      $(this).css("top", "0px");
   });
   
   
@@ -241,6 +265,9 @@ function movedToCenter () {
   // fade in the secondary emotions boxes
   $(".secondary").fadeIn();
   $(".back-button").fadeIn();
+  $("#secondary-center").css("background", $(".primary-selected").css("background"));
+  $("#secondary-center").text($(".primary-selected").text());
+  $(".primary-selected").hide();
 }
 
 function restartMainAnimation() {
