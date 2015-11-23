@@ -94,16 +94,8 @@ window.onload = function() { init() };
 
 
 /* PARSE */
-//Parse.initialize("oUZhOv8WHPbnEz6Xu7VXQ5q43E5l0cjuc1Gwr6a0", "OLeksWDdKCnVQx4yUNm0nPwNnfYhG20M8uEH4kPE");
-/*
-var TestObject = Parse.Object.extend("TestObject");
-var testObject = new TestObject();
-testObject.save({foo: "bar"}).then(function(object) {
-  alert("yay! it worked");
-});
-*/
-
-
+Parse.initialize("mEmM0UeRE8GX5hYcuI3Z8Yao4bT4Z7wTWyjOImvt", "G5gLmYiSdDo9YNHF56Rrom15e7VJyGYmUYlcu7f9");
+var MapPoint = Parse.Object.extend("MapPoint");
 
 /* FUNCTIONS FOR BOX INTERACTIONS */
 
@@ -236,6 +228,20 @@ $(document).ready(function(){
       selectedLeft = $(this).css("left");
       $(this).css("left", "-160px");
     }
+    
+  });
+  
+  // save to database when a secondary color (or the selected primary color) is clicked
+  $(".secondary, .primary-selected").click(function(event){
+    
+    var point = new MapPoint();
+    selectedColor = $(this).css("background-color");
+    point.save({color: selectedColor}).then(function(object) {
+      console.log("Color saved");
+    });
+    point.save({x: 175, y:255}).then(function(object) {
+      alert("Coords saved!");
+    });
     
   });
   /*
