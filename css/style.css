@@ -9,6 +9,14 @@ font-size:30px;
 
 }
 
+.normallink{text-decoration: initial;}
+
+.pulsedabutton {
+  -webkit-animation-duration: 2.5s;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+}
+
 .introbackground{
   background-color: #ffffff;
 }
@@ -34,6 +42,7 @@ body {
   padding: 40px;
   margin: 0px;
 }
+
 .all {
   width: 570px;
   margin-left: auto;
