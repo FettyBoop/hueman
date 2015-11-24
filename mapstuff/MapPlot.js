@@ -84,7 +84,17 @@ function main()
 function getData()
 {
 	var ctx = drawCanvas();
-
+	/* PARSE */
+	
+	Parse.initialize("mEmM0UeRE8GX5hYcuI3Z8Yao4bT4Z7wTWyjOImvt", "G5gLmYiSdDo9YNHF56Rrom15e7VJyGYmUYlcu7f9");
+	var MapPoint = Parse.Object.extend("MapPoint");
+	var query = new Parse.Query(MapPoint);
+	query.each(function(object){
+  		console.log(object.get("x") + " " + object.get("y") + " " + object.get("color"));
+  		blobs.push(new Blob(object.get("x"), object.get("y"), object.get("color")));
+	});
+	
+	/*
 	Tabletop.init( { key: "https://docs.google.com/spreadsheets/d/1VgwHL0V7Or7WMGFLtbn5BtuMk98W6bxiAUbiA8WsVJI/pubhtml?gid=0&single=true",
 		callback: showInfo,
 		simpleSheet: true } )
@@ -96,6 +106,7 @@ function getData()
 			blobs.push(new Blob(point.x, point.y, "rgba(" + point.color + ",0.65)"));
 		}
 	}
+	*/
 }
 
 /*

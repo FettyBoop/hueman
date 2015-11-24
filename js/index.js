@@ -96,6 +96,10 @@ window.onload = function() { init() };
 /* PARSE */
 Parse.initialize("mEmM0UeRE8GX5hYcuI3Z8Yao4bT4Z7wTWyjOImvt", "G5gLmYiSdDo9YNHF56Rrom15e7VJyGYmUYlcu7f9");
 var MapPoint = Parse.Object.extend("MapPoint");
+var query = new Parse.Query(MapPoint);
+query.each(function(object){
+  console.log(object.get("color"));
+});
 
 /* FUNCTIONS FOR BOX INTERACTIONS */
 
@@ -124,6 +128,7 @@ var selectedLeft = "auto";
 var selectedRight = "auto"; 
 
 var selectedColor;
+var point, coordX, coordY;
 $(document).ready(function(){
 
   $(".in").mouseover(function(event){
@@ -234,13 +239,16 @@ $(document).ready(function(){
   // save to database when a secondary color (or the selected primary color) is clicked
   $(".secondary, .primary-selected").click(function(event){
     
-    var point = new MapPoint();
+    point = new MapPoint();
     selectedColor = $(this).css("background-color");
     point.save({color: selectedColor}).then(function(object) {
       console.log("Color saved");
     });
-    point.save({x: 175, y:255}).then(function(object) {
-      alert("Coords saved!");
+    coordX = Math.floor( Math.random() * 1000 );
+    coordY = Math.floor( Math.random() * 550 );
+    point.save({x: coordX, y:coordY}).then(function(object) {
+      console.log("Coords saved");
+      window.location = 'mapstuff/MapPlot.html';
     });
     
   });
