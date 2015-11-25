@@ -67,6 +67,8 @@ function main()
 		clicked = true;
 		var x = e.pageX - canvas.offsetLeft;
 		var y = e.pageY - canvas.offsetTop;
+		x = x / canvas.width * 1000;
+		y = y / canvas.height * 550;
 
 		
 		var query = new Parse.Query(MapPoint);
