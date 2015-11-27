@@ -12,12 +12,19 @@
 
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+    $("body").click(function(){
+        $(this).hide();
+    });
+});
+</script>
   </head>
 
-  <body class=customfont introbackground >
+  <body class= introbackground >
   	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <a href="">
+     <a class='customfont' href="">
       <div>
   	 <div center>
 <h2>Welcome to</h2>
@@ -45,5 +52,6 @@ Click to Begin
     
   </div>  
 </div>
+</a>
   </body>
 </html>

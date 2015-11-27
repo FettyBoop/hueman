@@ -1,3 +1,11 @@
+
+
+a{
+  color:#333333;
+  text-decoration: none;
+}
+
+
 @font-face {
   font-family:'DinPro';
   src: url('../DINPro-Medium.otf');
