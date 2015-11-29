@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Hueman</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () { $('body').hide().fadeIn(2000)});
+
+        var count3 = setTimeout(myTimer3, 3000);
+        var count2 = setTimeout(myTimer2, 4000);
+        var count1 = setTimeout(myTimer1, 5000);
+        var redirect = setTimeout(redirect, 6000);
+        //clearTimeout(myVar);
+
+        function myTimer3() {
+            $(document).ready(function () { $('body').hide().fadeIn(500)});
+            document.getElementById("msg").textContent = "3";
+        }
+
+        function myTimer2() {
+            $(document).ready(function () { $('body').hide().fadeIn(500)});
+            document.getElementById("msg").textContent = "2";
+        }
+
+        function myTimer1() {
+            $(document).ready(function () { $('body').hide().fadeIn(500)});
+            document.getElementById("msg").textContent = "1";
+        }
+
+        function redirect(){
+          location.href="index.html";
+        }
+        //$('h1').fadeIn(3000);
+    </script>
+
+    <style>
+      body{
+        background-color: black;
+      }
+      h1{
+        /*position: fixed;*/
+        position: center;
+        top: 50%;
+        left: 50%;
+        color: white;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div>
+      <br><br><br>
+    <h1 id="msg">Take a Moment to Reflect</h1>
+  </div>
+  </body>
+</html>
