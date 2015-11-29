@@ -14,20 +14,23 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
-$(document).ready(function(){
-    $("body").click(function(){
-        $(this).hide();
-    });
-});
+      $(window).scroll(function() {
+          scroll(0,0);
+      });
+      $(document).ready(function(){
+          $("body").click(function(){
+              $(this).hide();
+          });
+      });
 </script>
   </head>
 
-  <body class= introbackground >
+  <body style="overflow: hidden;" class= introbackground >
   	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <a class='customfont' href="">
       <div>
   	 <div center>
-<h2>Welcome to</h2>
+<h2 style="margin-bottom: 25px;">Welcome to</h2>
 
 </div>
 <div>
@@ -37,7 +40,7 @@ $(document).ready(function(){
 
 
   	 <div center>
-      <h4 class='animated infinite pulse pulsedabutton '>
+      <h4 style="margin-top: 10px;" class='animated infinite pulse pulsedabutton '>
 Click to Begin
 </h4>
 </div>

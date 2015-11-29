@@ -1,4 +1,7 @@
 
+$(window).scroll(function() {
+    scroll(0,0);
+});
 
 var colors = new Array(
   [234,153,153], //angry
