@@ -93,6 +93,7 @@ function main()
 			
 		});
 		
+		document.getElementById("toptext").innerHTML = "This is how people around you feel!"
 
 		getData();
 		var ctx = drawCanvas();
