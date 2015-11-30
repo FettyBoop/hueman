@@ -9,7 +9,9 @@ jQuery: http://jquery.com/ */
 var map = new Image();
 map.src = "./img/map.png";
 var blobs = [];
+var currblobs = [];
 var clicked = false;
+var keysquares = [];
 
 /* Fit the canvas properly inside the window
 1000 * 550 are the "baseline" dimensions */
@@ -18,7 +20,7 @@ function doResize()
 	var canvas = document.getElementById("canvas");
 	if (window.innerWidth * 0.55 > window.innerHeight)
 	{ // height will be the limiting factor
-		canvas.height = window.innerHeight * 0.95;
+		canvas.height = window.innerHeight * 0.9;
 		canvas.width = canvas.height / 0.55;
 	}
 	else
@@ -33,6 +35,19 @@ function main()
 {
 	// Set the background color
 	document.body.style.backgroundColor = BACKGROUND_COLOR;
+
+	// Initialize the clickable boxes in the key
+	keysquares.push(new KeySquare(815, 365, "Angry"));
+	keysquares.push(new KeySquare(865, 365, "Afraid"));
+	keysquares.push(new KeySquare(915, 365, "Happy"));
+	keysquares.push(new KeySquare(815, 415, "Impassive"));
+	keysquares.push(new KeySquare(865, 415, "ALL"));
+	keysquares.push(new KeySquare(915, 415, "Disgusted"));
+	keysquares.push(new KeySquare(815, 465, "Confident"));
+	keysquares.push(new KeySquare(865, 465, "Troubled"));
+	keysquares.push(new KeySquare(915, 465, "Sad"));
+
+
 
 	///// LISTENERS /////
 	// Get rid of annoying text select
@@ -61,67 +76,111 @@ function main()
 	// Click to choose a location
 	canvas.addEventListener("click", function(e)
 	{
-		// Only let them click once
-		if (clicked)
-			return;
-		clicked = true;
 		var x = e.pageX - canvas.offsetLeft;
 		var y = e.pageY - canvas.offsetTop;
 		x = x / canvas.width * 1000;
 		y = y / canvas.height * 550;
 
-		
-		var query = new Parse.Query(MapPoint);
-		// Sorts the results in descending order by the Created Date field
-		query = query.addDescending("createdAt");
 
-		query.first().then(function(object){
-			object.set("x", x);
-			object.set("y", y);
-			console.log(object.get("x") + " " + object.get("y") + " " + object.get("color"));
+		// Only let them click once for choosing location
+		if (clicked) // Otherwise do the key
+		{
+			var found;
+			for (var i in keysquares)
+			{
+				if (keysquares[i].contains(x, y))
+				{
+					found = keysquares[i];
+					break;
+				}
+			}
+			if (found == null)
+				return;
+
+			applyFilter(found.name);
+			var ctx = drawCanvas();
+			drawBlobs(ctx);
+			return;
+		}
+		else
+		{
+			clicked = true;
 			
-			object.save(null, {
-			  success: function(object) {
-			    // Execute any logic that should take place after the object is saved.	    
-			  },
-			  error: function(object, error) {
-			    // Execute any logic that should take place if the save fails.
-			    // error is a Parse.Error with an error code and message.
-			    alert("error occurred while saving");
-			  }
+			var query = new Parse.Query(MapPoint);
+			// Sorts the results in descending order by the Created Date field
+			query = query.addDescending("createdAt");
+
+			query.first().then(function(object){
+				object.set("x", x);
+				object.set("y", y);
+				console.log(object.get("x") + " " + object.get("y") + " " + object.get("color"));
+				
+				object.save(null, {
+				  success: function(object) {
+				    // Execute any logic that should take place after the object is saved.	    
+				  },
+				  error: function(object, error) {
+				    // Execute any logic that should take place if the save fails.
+				    // error is a Parse.Error with an error code and message.
+				    alert("error occurred while saving");
+				  }
+				});
+				
 			});
 			
-		});
-		
-		document.getElementById("toptext").innerHTML = "This is how people around you feel!"
+			document.getElementById("toptext").innerHTML = "Please wait."
 
-		getData();
-		var ctx = drawCanvas();
+			getData(".*");
+			var ctx = drawCanvas();
 
-		// This gives enough time for the data to return
-		setTimeout(function(){
-			drawBlobsInterval(ctx, 0);
-		}, 1000);
+			// This gives enough time for the data to return
+			setTimeout(function(){
+				document.getElementById("toptext").innerHTML = "Please wait.."
+				setTimeout(function(){
+					document.getElementById("toptext").innerHTML = "Please wait..."
+					setTimeout(function(){
+						drawBlobsInterval(ctx, 0);
+						document.getElementById("toptext").innerHTML = "This is how people around you feel!"
+					}, 1000);
+				}, 1000);
+			}, 1000);
 
+		}
 		// console.log(data);
 	});
 	///// LISTENERS /////
 
 	doResize();
-	drawCanvas();
+	var ctx = drawCanvas();
+
+	// for (var i in keysquares)
+		// keysquares[i].draw(ctx);
+}
+
+function applyFilter(name)
+{
+	var filter = getColorRegex(name);
+	console.log("Filtering for: " + filter);
+	currblobs = [];
+	for (var i in blobs)
+	{
+		if (blobs[i].name == null || blobs[i].name.match(filter))
+			currblobs.push(blobs[i]);
+	}
 }
 
 /* Get the existing data from wherever */
 function getData()
 {
+	blobs = [];
 	/* PARSE */
 	Parse.initialize("mEmM0UeRE8GX5hYcuI3Z8Yao4bT4Z7wTWyjOImvt", "G5gLmYiSdDo9YNHF56Rrom15e7VJyGYmUYlcu7f9");
 	var MapPoint = Parse.Object.extend("MapPoint");
 	var query = new Parse.Query(MapPoint);
 	query.each(function(object){
-  		// console.log(object.get("x") + " " + object.get("y") + " " + object.get("color"));
-  		blobs.push(new Blob(object.get("x"), object.get("y"), object.get("color")));
+		blobs.push(new Blob(object.get("x"), object.get("y"), object.get("color"), object.get("name")));
   	});
+  	currblobs = blobs;
 }
 
 /* Draws the map onto the canvas */
@@ -143,9 +202,9 @@ function drawCanvas()
 /* Draws the blobs immediately, no delay */
 function drawBlobs(ctx)
 {
-	for (var i in blobs)
+	for (var i in currblobs)
 	{
-		blobs[i].draw(ctx);
+		currblobs[i].draw(ctx);
 	}
 }
 
@@ -153,21 +212,22 @@ function drawBlobs(ctx)
 function drawBlobsInterval(ctx, i)
 {
 	setTimeout(function(){
-		blobs[i].draw(ctx);
+		currblobs[i].draw(ctx);
 		i++;
-		if (i < blobs.length)
+		if (i < currblobs.length)
 			drawBlobsInterval(ctx, i);
 	}, BLOB_DRAW_INTERVAL);
 }
 
 //// BLOB ////
 
-function Blob(x, y, color)
+function Blob(x, y, color, name)
 {
 	// console.log("created new blob");
 	this.x = parseInt(x);
 	this.y = parseInt(y);
 	this.color = color;
+	this.name = name;
 }
 
 /* Not really a blob anymore but I'm still calling it a blob. */
@@ -191,4 +251,47 @@ Blob.prototype.draw = function(ctx)
 	path.closePath();
 	ctx.fill(path);
 	ctx.stroke(path);
+}
+
+
+//// KEYSQUARE ////
+
+function KeySquare(x, y, name)
+{
+	this.x = x;
+	this.y = y;
+	this.name = name;
+}
+
+// For making sure bounding box is right
+KeySquare.prototype.draw = function(ctx)
+{
+	ctx.strokeStyle = "#000000";
+	ctx.strokeRect(this.x * SCALEFACTOR, this.y * SCALEFACTOR, 46 * SCALEFACTOR, 46 * SCALEFACTOR);
+}
+
+// Bounding box
+KeySquare.prototype.contains = function(x, y)
+{
+	if (this.x > x || (this.x + 46) < x
+		|| this.y > y || (this.y + 46) < y)
+		return false;
+	return true;
+}
+
+// Emotion name to color mappings
+function getColorRegex(name)
+{
+	switch(name)
+	{
+		case "Angry": return "Angry|Impatient|Annoyed|Frustrated|Upset|Exasperated|Hostile|Wrathful|Enraged";
+		case "Happy": return "Happy|Content|Satisfied|Pleased|Thankful|Glad|Joyful|Excited|Ecstatic";
+		case "Sad": return "Sad|Dissatisfied|Lonely|Disappointed|Ashamed|Despondent|Rejected|Depressed|Inconsolable";
+		case "Afraid": return "Afraid|Surprised|Nervous|Apprehensive|Startled|Anxious|Scared|Dreadful|Terrified";
+		case "Disgusted": return "Disgusted|Distasteful|Bitter|Jealous|Spiteful|Scornful|Disdainful|Loathsome|Hateful";
+		case "Troubled": return "Troubled|Hesitant|Vulnerable|Restrained|Confused|Guilty|Distraught|Overwhelmed|Powerless";
+		case "Confident": return "Confident|Hopeful|Positive|Courageous|Proud|Arrogant|Bold|Fearless|Powerful";
+		case "Impassive": return "Impassive|Calm|Indifferent|Sleepy|Apathetic|Unethusiastic|Detached|Distant|Content";
+		case "ALL": return ".*";
+	}
 }

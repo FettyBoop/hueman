@@ -77,24 +77,6 @@ var color2 = "rgb("+r2+","+g2+","+b2+")";
 
 setInterval(updateGradient,10);
 
-/* TABLETOP */
-window.onload = function() { init() };
-
-  var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1VgwHL0V7Or7WMGFLtbn5BtuMk98W6bxiAUbiA8WsVJI/pubhtml?gid=0&single=true';
-
-  function init() {
-    Tabletop.init( { key: public_spreadsheet_url,
-                     callback: showInfo,
-                     simpleSheet: true } )
-  }
-
-  function showInfo(data, tabletop) {
-    /*
-    alert("Successfully processed!")
-    console.log(data);
-    */
-  }
-
 
 /* PARSE */
 Parse.initialize("mEmM0UeRE8GX5hYcuI3Z8Yao4bT4Z7wTWyjOImvt", "G5gLmYiSdDo9YNHF56Rrom15e7VJyGYmUYlcu7f9");
@@ -110,7 +92,7 @@ var happy = ["Content", "Satisfied", "Pleased", "Thankful", "Glad", "Joyful", "E
 var happyColors = ["#FEF6BD", "#FDF297", "#FCF084", "#FCEE71", "#FCEC5E", "#FBEA4B", "#FAE625", "#FAE200"]
 var sad = ["Dissatisfied", "Lonely", "Disappointed", "Ashamed", "Despondent", "Rejected", "Depressed", "Inconsolable"];
 var sadColors = ["#B8D2FF", "#A5BDEF", "#8095D1", "#6E80C1", "#5C6CB2", "#4958A3", "#242F84", "#121B75"];
-var angry = ["Impatient", "Irritated/Annoyed", "Frustrated", "Upset", "Exasperated","Hostile","Wrathful", "Enraged"];
+var angry = ["Impatient", "Annoyed", "Frustrated", "Upset", "Exasperated","Hostile","Wrathful", "Enraged"];
 var angryColors = ["#FFAEA8","#F89E97", "#EB7E75", "#E56E64", "#DF5E54", "#D23E32", "#CB2E21", "#C51E10"];
 var afraid = ["Surprised","Nervous","Apprehensive","Startled", "Anxious","Scared","Dreadful", "Terrified"];
 var afraidColors = ["#FFC894","#F2B276", "#E59D58", "#DF924A", "#D8873B", "#D27D2C", "#CB721D", "#C5670E"];
@@ -243,6 +225,9 @@ $(document).ready(function(){
   $(".secondary, .primary-selected").click(function(event){
     
     point = new MapPoint();
+    point.save({name: $(this).text()}).then(function(object) {
+      console.log("Name saved");
+    });
     selectedColor = $(this).css("background-color");
     point.save({color: selectedColor}).then(function(object) {
       console.log("Color saved");
