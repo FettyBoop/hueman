@@ -287,11 +287,11 @@ function getColorRegex(name)
 		case "Angry": return "Angry|Impatient|Annoyed|Frustrated|Upset|Exasperated|Hostile|Wrathful|Enraged";
 		case "Happy": return "Happy|Content|Satisfied|Pleased|Thankful|Glad|Joyful|Excited|Ecstatic";
 		case "Sad": return "Sad|Dissatisfied|Lonely|Disappointed|Ashamed|Despondent|Rejected|Depressed|Inconsolable";
-		case "Afraid": return "Afraid|Surprised|Nervous|Apprehensive|Startled|Anxious|Scared|Dreadful|Terrified";
+		case "Afraid": return "Afraid|Surprised|Nervous|Uneasy|Startled|Anxious|Scared|Dreadful|Terrified";
 		case "Disgusted": return "Disgusted|Distasteful|Bitter|Jealous|Spiteful|Scornful|Disdainful|Loathsome|Hateful";
-		case "Troubled": return "Troubled|Hesitant|Vulnerable|Restrained|Confused|Guilty|Distraught|Overwhelmed|Powerless";
+		case "Troubled": return "Troubled|Hesitant|Vulnerable|Restrained|Confused|Guilty|Distraught|Disturbed|Powerless";
 		case "Confident": return "Confident|Hopeful|Positive|Courageous|Proud|Arrogant|Bold|Fearless|Powerful";
-		case "Impassive": return "Impassive|Calm|Indifferent|Sleepy|Apathetic|Unethusiastic|Detached|Distant|Content";
+		case "Impassive": return "Impassive|Calm|Indifferent|Sleepy|Apathetic|Unmoved|Detached|Distant|Cold";
 		case "ALL": return ".*";
 	}
 }

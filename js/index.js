@@ -94,15 +94,15 @@ var sad = ["Dissatisfied", "Lonely", "Disappointed", "Ashamed", "Despondent", "R
 var sadColors = ["#B8D2FF", "#A5BDEF", "#8095D1", "#6E80C1", "#5C6CB2", "#4958A3", "#242F84", "#121B75"];
 var angry = ["Impatient", "Annoyed", "Frustrated", "Upset", "Exasperated","Hostile","Wrathful", "Enraged"];
 var angryColors = ["#FFAEA8","#F89E97", "#EB7E75", "#E56E64", "#DF5E54", "#D23E32", "#CB2E21", "#C51E10"];
-var afraid = ["Surprised","Nervous","Apprehensive","Startled", "Anxious","Scared","Dreadful", "Terrified"];
+var afraid = ["Surprised","Nervous","Uneasy","Startled", "Anxious","Scared","Dreadful", "Terrified"];
 var afraidColors = ["#FFC894","#F2B276", "#E59D58", "#DF924A", "#D8873B", "#D27D2C", "#CB721D", "#C5670E"];
 var disgusted = ["Distasteful", "Bitter", "Jealous", "Spiteful", "Scornful", "Disdainful", "Loathsome", "Hateful"];
 var disgustedColors = ["#BDEFAC","#AAE29C", "#95D38A", "#7FC579", "#6BB768", "#56A957", "#2D8D35", "#047113"];
-var troubled = ["Hesitant","Vulnerable", "Restrained", "Confused", "Guilty", "Distraught",  "Overwhelmed", "Powerless"];
+var troubled = ["Hesitant","Vulnerable", "Restrained", "Confused", "Guilty", "Distraught",  "Disturbed", "Powerless"];
 var troubledColors = ["#B8FCFF","#A5ECEF", "#93DDE0", "#6EBFC1", "#5CB0B2", "#49A1A3", "#248384", "#006566"];
 var confident = ["Hopeful", "Positive", "Courageous", "Proud", "Arrogant", "Bold", "Fearless", "Powerful"];
 var confidentColors = ["#F4E1FF","#E6CAF6", "#D9B4EE", "#CB9DE6", "#BE87DE", "#A35ACD", "#882DBD", "#7B16B5"];
-var impassive = ["Calm", "Indifferent", "Sleepy", "Apathetic", "Unethusiastic", "Detached", "Distant", "Content"];
+var impassive = ["Calm", "Indifferent", "Sleepy", "Apathetic", "Unmoved", "Detached", "Distant", "Cold"];
 var impassiveColors = ["#EDEDED","#DDDDDD", "#CDCDCD", "#BDBDBD", "#ADADAD", "#9D9D9D", "#7D7D7D", "#5D5D5D"];
 var secondary;  // set when a main emotion is selected
 // these are used to save the old location of the selected main emotion box
